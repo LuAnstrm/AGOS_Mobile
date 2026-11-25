@@ -48,7 +48,7 @@ export class AuthController {
     );
     res.cookie(SESSION_COOKIE, token, {
       httpOnly: true,
-      sameSite: 'lax',
+      sameSite: this.config.secureCookies ? 'none' : 'lax',
       secure: this.config.secureCookies,
       path: '/',
       maxAge: ttlSec * 1000,
